@@ -1,0 +1,70 @@
+Bounded Context: Fetch Pages
+
+Workflow: "Fetch ClimateOf and GeographyOf Pages"
+    triggered by:
+        manual execution of function
+    primary input:
+        ClimateOf and GeographyMinusClimateOf lists
+    output events:
+        "PagesSaved" event
+    side effects:
+        multiple web pages saved to db
+
+--
+data TemperatureTable =
+    Regular
+    OR Irregular
+    OR Infobox
+
+--
+do FetchWebPage:
+    dependencies: ClimateOfPagesList, GeographyMinusClimateOfPagesList,
+                  OutPath, RestBaseAPI, AzureSQLServer
+
+    Readlines of ClimateOfPagesList
+    Readlines of GeographyMinusClimateOfPagesList
+    Combine lists of lines, climate pages first
+
+    Fetch page from RestBaseAPI:
+        If ResponseURL has not been fetched before:
+            If HasTemperatureTable:
+                Store page name, body, table html, TemperatureTable type
+                and response URL in db
+            Else:
+                Save page name, body and response URL in db
+                (for verification)
+            Loop
+        Else:
+            Loop
+
+do HasTemperatureTable:
+    dependencies: PageHTML
+
+    If PageHTML has table.wikitable:
+        HasTableTemps
+    Else If:
+        Has table.infobox > table.infobox:
+            HasInfoBoxTemps
+    Else:
+        Loop
+
+do HasTableTemps:
+    dependencies: TableHTML
+
+    If TableHTML has row "Average High" AND row "Average Low" AND columns
+        "Jan" ... "Dec", "Year":
+            Return Some Regular
+    Else If:
+        TableHTML has row "High Temperature" AND row "Low Temperature" AND columns
+            "Jan" ... "Dec":
+                Return Some Irregular
+    Else:
+        Return None
+
+do HasInfoBoxTemps:
+    dependencies: TableHTML
+
+    If TableHTML has row "J" ... "D" and row "div style='color:red:'":
+        Return Some Infobox
+    Else:
+        Return None

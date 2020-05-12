@@ -1,0 +1,9 @@
+[package]
+name = "fetch_pages"
+version = "0.2.0"
+authors = ["Paul Bacchus <paul@paulbacchus.com>"]
+
+[dependencies]
+types = {path = "../types"}
+reqwest = "0.8.5"
+lazy_static = "1.0.1"

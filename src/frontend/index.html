@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-124154689-1"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-124154689-1');
+	</script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0.5">
+	<meta name="author" content="Paul Bacchus">
+	<meta name="description" content="City Climes has collated weather information on over 6000 locations from Wikipedia, allowing you to search, filter and compare them to find the perfect climate to travel to.">
+	<meta name="og:image" content="https://www.cityclimes.com/static/open-graph-logo.png">
+	<meta name="og:description" content="City Climes has collated weather information on over 6000 locations from Wikipedia, allowing you to search, filter and compare them to find the perfect climate to travel to.">
+	<meta name="og:title" content="City Climes">
+	<meta name="twitter:title" content="City Climes">
+	<title>City Climes</title>
+	<link rel="stylesheet" href="/static/normalize.css">
+	<!-- ****** faviconit.com favicons ****** -->
+	<link rel="shortcut icon" href="/static/faviconit/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="/static/faviconit/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="/static/faviconit/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="/static/faviconit/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="/static/faviconit/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="/static/faviconit/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/static/faviconit/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/static/faviconit/favicon-16.png">
+	<link rel="apple-touch-icon" href="/static/faviconit/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="/static/faviconit/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="/static/faviconit/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="/static/faviconit/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="/static/faviconit/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="/static/faviconit/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="/static/faviconit/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="/static/faviconit/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/static/faviconit/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="/static/faviconit/favicon-144.png">
+	<meta name="msapplication-config" content="/static/faviconit/browserconfig.xml">
+	<!-- ****** faviconit.com favicons ****** -->
+</head>
+
+<body id="cctop">
+	<script src="/static/main.js"></script>
+	<script>
+		var app = Elm.Main.fullscreen();
+
+		app.ports.analytics.subscribe(function (linkName) {
+			gtag('event', 'click', {
+				'event_category': 'outbound_links',
+				'event_label': linkName
+			});
+		});
+	</script>
+</body>
+
+</html>

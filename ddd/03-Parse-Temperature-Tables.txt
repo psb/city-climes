@@ -1,0 +1,61 @@
+Bounded Context: Parse Temperature Tables
+
+Workflow: "Parse Temperature Tables From Previously Fetched and Saved Pages"
+    triggered by:
+        manual execution of function
+    primary input:
+        ClimateOf and GeographyMinusClimateOf pages
+    output events:
+        "TemperatureTablesParsed" event
+    side effects:
+        multiple temperature data sets saved to db
+
+--
+data TemperatureTable =
+    Regular
+    OR Irregular
+    OR Infobox
+
+--
+do ParseTemperatureTables:
+    dependencies: TableHTML, TemperatureTable type, AzureSQLServer
+
+    If TemperatureTable type = Regular:
+        ParseRegularTempTable
+        Save to db
+    Else If:
+        TemperatureTable type = Irregular:
+            ParseIrregularTempTable
+            Save to db
+    Else If:
+        TemperatureTable type = Infobox:
+            ParseInfoBoxTemps
+            Save to db
+
+do ParseRegularTempTable:
+    dependencies: TableHTML
+
+    Extract:
+        average daily high temperatures
+        average daily low temperatures
+        mean monthly sunshine hours (if present)
+
+    Extract imperial or metric alternative accordingley
+
+do ParseIrregularTempTable:
+    dependencies: TableHTML
+
+    Extract:
+        average daily high temperatures
+        average daily low temperatures
+
+    Extract imperial or metric alternative accordingley
+
+do ParseInfoBoxTemps:
+    dependencies: TableHTML
+
+    Extract:
+        average daily high temperatures
+        average daily low temperatures
+
+    Extract imperial or metric alternative accordingley

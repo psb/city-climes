@@ -1,0 +1,11 @@
+[package]
+name = "fetch_and_parse_climate_pages"
+version = "0.1.0"
+authors = ["Paul Bacchus <paul@paulbacchus.com>"]
+
+[dependencies]
+rayon = "1.0.1"
+types = {path = "src/types"}
+fetch_pages = {path = "src/fetch_pages"}
+parse_pages = {path = "src/parse_pages"}
+sqlite = {path = "src/sqlite"}

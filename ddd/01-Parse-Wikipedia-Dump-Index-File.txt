@@ -1,0 +1,29 @@
+Bounded Context: Parse Index File
+
+Workflow: "Parse Index File"
+    triggered by:
+        manual execution of function
+    primary input:
+        Wikipedia dump index file
+    output events:
+        "ListsSaved" event
+    side effects:
+        5 lists saved to disk
+
+--
+do ParseIndexFile:
+    dependencies: IndexFile, OutPath, Filename
+
+    Readlines of IndexFile
+
+    Filter lines for "Climate of..." AND "Geography of...":
+        Save list to OutPath + Filename
+
+    Remove indexes of pages and keep just page names:
+        Save list to OutPath + Filename
+
+    Separate ClimateOf and GeographyOf pages:
+        Save both lists to OutPath + Filename
+
+    Remove locations from GeographyOf pages that appear in ClimateOf pages:
+        Save list to OutPath + Filename

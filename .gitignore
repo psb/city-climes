@@ -1,0 +1,54 @@
+syntax: glob
+
+### Project Specific ###
+data/geonames
+data/node-sqlite
+data/unstats
+data/wikipedia
+data/old-dbs
+**/*.db
+**/*.bkup
+**/*.csv
+**/*.log
+**/*.ods\#
+src/frontend/static
+src/frontend/netlify-cc
+marketing
+**/.cache
+
+### Rust ###
+**/target/
+*.rs.bk
+
+### Elm ###
+**/elm-stuff
+
+### Azure Function - Node ###
+bin
+obj
+csx
+.vs
+edge
+Publish
+
+*.user
+*.suo
+*.cscfg
+*.Cache
+project.lock.json
+
+/packages
+/TestResults
+
+/tools/NuGet.exe
+/App_Data
+/secrets
+/data
+.secrets
+appsettings.json
+local.settings.json
+
+node_modules
+
+### OS ###
+.DS_Store

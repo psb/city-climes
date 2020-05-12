@@ -1,0 +1,4 @@
+[[package]]
+name = "parse_geonames_cities_file"
+version = "0.1.0"
+

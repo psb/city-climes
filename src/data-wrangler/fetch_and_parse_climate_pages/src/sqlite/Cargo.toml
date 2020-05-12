@@ -1,0 +1,11 @@
+[package]
+name = "sqlite"
+version = "0.2.0"
+authors = ["Paul Bacchus <paul@paulbacchus.com>"]
+
+[dependencies]
+types = {path = "../types"}
+
+[dependencies.rusqlite]
+version = "0.13.0"
+features = ["serde_json"]
