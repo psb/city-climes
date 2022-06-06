@@ -4,5 +4,5 @@ version = "0.1.0"
 authors = ["Paul Bacchus <paul@paulbacchus.com>"]
 
 [dependencies]
-regex = "0.2"
+regex = "1.5"
 rayon = "1.0.1"
